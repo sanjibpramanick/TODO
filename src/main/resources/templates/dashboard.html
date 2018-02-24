@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>TODO Application</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+	<div id="todoContainer" class="table-responsive"
+		style="width: 80%; margin-left: auto; margin-right: auto;">
+		<h2>Your TODO List:</h2>
+		<br />
+		<button class="btn btn-primary" id="addNote">Create New Note</button>
+		</br/> </br/>
+		<table class="table table-bordered table-hover" id="todoTable"
+			dt:table="true">
+			<thead>
+				<tr>
+					<!-- <th>Id</th> -->
+					<th>TODO</th>
+					<!-- <th>Created</th>
+					<th>Modified</th> -->
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="note : ${notes}">
+					<!-- <td th:text="${note.id}"
+						th:class="${note.status}=='ACTIVE'?'':'complete'"></td> -->
+					<td th:text="${note.content}"
+						th:class="${note.status}=='ACTIVE'?'':'complete'"></td>
+					<!-- <td th:text="${note.createDate}"
+						th:class="${note.status}=='ACTIVE'?'':'complete'"></td>
+					<td th:text="${note.modifiedDate}"
+						th:class="${note.status}=='ACTIVE'?'':'complete'"></td> -->
+					<td><a title="Update Your Note"
+						th:class="${note.status}!='ACTIVE'?'hiddenButton':'btn btn-default eBtn'"
+						th:href="@{notes/{id}(id=${note.id})}" role="button"
+						data-toggle="modal tooltip"><span
+							th:class="${note.status}!='ACTIVE'?'hiddenButton':'glyphicon glyphicon-pencil'"></span></a>
+
+						<a href="#" data-toggle="tooltip"
+						title="Click to complete the action item"
+						th:class="${note.status}!='ACTIVE'?'hiddenButton':'btn btn-success cBtn'"
+						th:href="@{done/{id}(id=${note.id})}" role="button"><span
+							th:class="${note.status}!='ACTIVE'?'hiddenButton':'glyphicon glyphicon-ok'"></span></a>
+						<a data-toggle="tooltip" title="Click to remove item"
+						class="btn btn-danger dBtn" href="#"
+						th:href="@{delete/{id}(id=${note.id})}" role="button"><span
+							class="glyphicon glyphicon-trash"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+		<hr />
+		<ul class="nav nav-pills">
+			<li class="nav-item"
+				th:each="i : ${#numbers.sequence(0,notes.totalPages-1)}"
+				th:class="${currentPage}==${i}?'active':''"><a
+				th:href="@{welcome(page=${i})}" th:text="${i}" class="nav-link"></a></li>
+		</ul>
+	</div>
+
+
+
+	<!-- Modal -->
+	<div id="todoModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modify Your Note :</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input type="hidden" id="noteId"> <label for="noteContent">Your
+							TO-DO note:</label> <input class="form-control" type="text"
+							id="noteContent">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal"
+						id="sBtn">Save</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+<script type="text/javascript" src="js/main.js"></script>
+<link rel="stylesheet" href="css/main.css">
+</html>

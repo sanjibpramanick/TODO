@@ -1,0 +1,15 @@
+.hiddenButton {
+	display: none;
+}
+
+.table th {
+	text-align: center;
+}
+
+.table td {
+	text-align: center;
+}
+
+.complete {
+	text-decoration: line-through;
+}

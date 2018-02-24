@@ -1,0 +1,15 @@
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 1',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 2',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 3',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 4',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 5',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 6',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 7',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 8',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 9',now(),now(),'ACTIVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 10',now(),now(),'INACTVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 11',now(),now(),'INACTVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 12',now(),now(),'INACTVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 13',now(),now(),'INACTVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 14',now(),now(),'INACTVE');
+insert into notes (content,create_date,modified_date,status) values ('This is test note - 15',now(),now(),'INACTVE');
